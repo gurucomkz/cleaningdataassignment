@@ -58,8 +58,8 @@ names(onlyMean) <- gsub("\\.mean","",names(onlyMean))
 meltedGsum <- melt(onlyMean, 
                    id.vars=c("Subject","Activity"), 
                    measure.vars = 3:length(names(onlyMean))) %>% 
-    group_by(melted, Subject, Activity, variable) %>%
-    summarize(meltedG, mean = mean(value))
+    group_by(Subject, Activity, variable) %>%
+    summarize(mean = mean(value))
 
 
 write.table(meltedGsum, file="result.txt", row.name=FALSE)
